@@ -4,7 +4,15 @@
     <title>Shopping List Check Off</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="styles/bootstrap.min.css">
+
     <style>
+	  body {
+		font-family: "Comic Sans MS";
+	  }
+	  .jumbotron {
+		font-family: "Verdana";
+		background: green;
+	  }
       .emptyMessage {
         font-weight: bold;
         color: red;
@@ -22,32 +30,40 @@
       }
     </style>
   </head>
-<body>
+<body ng-app="ShoppingListCheckOff">
   <div class="container">
+  <div class="jumbotron">
   <h1>Shopping List Check Off</h1>
+  </div>
 
   <div class="row">
 
     <!-- To Buy List -->
-    <div class="col-md-6">
+    <div class="col-md-6" ng-controller="ToBuyController as tbctrl">
      <h2>To Buy:</h2>
      <ul>
-       <li>Buy 10 cookies <button class="btn btn-default"><span class="glyphicon glyphicon-ok"></span> Bought</button></li>
-       <li>Buy 10 cookies <button class="btn btn-default"><span class="glyphicon glyphicon-ok"></span> Bought</button></li>
+       <li ng-repeat="item in tbctrl.items">Buy {{ item.quantity }} {{ item.name }} <button class="btn btn-default" ng-click="tbctrl.moveItem($index)"><span class="glyphicon glyphicon-ok"></span> Bought</button><button class="btn-xs btn" ng-click="tbctrl.removeItem($index);">Remove</button></li>
      </ul>
-     <div class="emptyMessage">Everything is bought!</div>
+     <div class="emptyMessage" ng-if="tbctrl.isEmpty();">Everything is bought!</div>
+	   <input type="text" ng-model="tbctrl.itemName" placeholder="Item name">
+	   <input type="text" ng-model="tbctrl.itemQty" placeholder="Quantity">
+	   <button ng-click="tbctrl.addItem();">Add Item</button>
     </div>
 
     <!-- Already Bought List -->
-    <div class="col-md-6">
+    <div class="col-md-6" ng-controller="AlreadyBoughtController as abctrl">
      <h2>Already Bought:</h2>
      <ul>
-       <li>Bought 10 cookies</li>
+       <li ng-repeat="item in abctrl.items">Bought {{ item.quantity }} {{ item.name }} <button class="btn btn-xs" ng-click="abctrl.removeItem($index);">Remove</button></li>
      </ul>
-     <div class="emptyMessage">Nothing bought yet.</div>
+     <div class="emptyMessage" ng-if="abctrl.isEmpty();">Nothing bought yet.</div>
     </div>
   </div>
 </div>
+
+	<!-- The scripts -->
+<script src="angular.min.js"></script>
+<script src="app.js"></script>
 
 </body>
 </html>
