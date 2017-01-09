@@ -1,5 +1,28 @@
+html {
+	height: 100%;
+}
+found-items {
+	margin-top: 5em;
+	display: block;
+}
+.empty {
+	font-family: "Comic Sans MS";
+	font-size: 1.5em;
+	color: white;
+	float: left;
+	text-align: center;
+}
+body {
+	background: linear-gradient(red, yellow);
+}
+.container {
+	margin: auto;
+	width: 45%;
+}
 h1 {
   margin-bottom: 30px;
+  color: white;
+  font-family: Georgia;
 }
 input[type="text"] {
   width: 200px;
