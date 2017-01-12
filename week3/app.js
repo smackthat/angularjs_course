@@ -9,7 +9,42 @@
 	.controller('NarrowItDownController',NarrowItDownController)
 	.service('MenuSearchService',MenuSearchService)
 	.constant('ApiPath', "https://davids-restaurant.herokuapp.com/menu_items.json")
-	.directive('foundItems',FoundItemsDirective);
+	.component('foundItems', {
+		templateUrl: "templates/founditems.template.html",
+		controller: FoundItemsComponentController,
+		bindings: {
+			onRemove: '&',
+			items: '<',
+			nothing: '<'
+		}
+	})
+	.component('loader', {
+		templateUrl: "templates/itemsloaderindicator.template.html",
+		controller: LoaderController
+	});
+	
+	
+	LoaderController.$inject = ['$rootScope'];
+	function LoaderController($rootScope) {
+		var $ctrl = this;
+		
+		
+	}
+	
+	
+	FoundItemsComponentController.$inject = ['$rootScope', '$element', '$q'];
+	function FoundItemsComponentController($rootScope, $element, $q) {
+		var $ctrl = this;
+		
+		$ctrl.$doCheck = function () {
+			console.log("Derp!", this);
+		};
+		
+		$ctrl.remove = function (myIndex) {
+			$ctrl.onRemove({ index: myIndex });
+		};
+		
+	}
 	
 	
 	NarrowItDownController.$inject = ['MenuSearchService'];
@@ -76,9 +111,10 @@
 		
 	}
 	
+	/*
 	function FoundItemsDirective () {
 		var ddo = {
-			templateUrl: "loader/itemsloaderindicator.template.html",
+			templateUrl: "templates/founditems.template.html",
 			scope: {
 				onRemove: '&',
 				items: '<',
@@ -106,7 +142,7 @@
 			}
 		}
 		
-	}
+	} */
 	
 })();
 
