@@ -28,16 +28,32 @@
 	function LoaderController($rootScope) {
 		var $ctrl = this;
 		
+		var cancelListener = $rootScope.$on('list:processing', function (event, data) {
+			console.log("Event: ", event);
+			console.log("Data: ", data);
+			
+			if (data.on) {
+				$ctrl.showLoader = true;
+			}
+			else {
+				$ctrl.showLoader = false;
+			}
+		});
+		
+		$ctrl.$onDestroy = function () {
+			cancelListener();
+		};
 		
 		
 	}
 	
 	
 	
-	FoundItemsComponentController.$inject = ['$rootScope', '$element', '$http'];
+	FoundItemsComponentController.$inject = ['$rootScope', '$element'];
 	function FoundItemsComponentController($rootScope, $element, $http) {
 		var $ctrl = this;
 		
+		/*
 		$ctrl.$doCheck = function () {
 			//console.log("Derp!", $http.pendingRequests);
 			if ($http.pendingRequests.length > 0 ) {
@@ -46,17 +62,18 @@
 				$rootScope.$broadcast('items:processing', {on: true});
 			}
 		};
+		*/
 		
 		$ctrl.remove = function (myIndex) {
-			console.log("Index: ", myIndex);
+			//console.log("Index: ", myIndex);
 			$ctrl.onRemove({ index: myIndex });
 		};
 		
 	}
 	
 	
-	NarrowItDownController.$inject = ['MenuSearchService'];
-	function NarrowItDownController (MenuSearchService) {
+	NarrowItDownController.$inject = ['$rootScope','MenuSearchService'];
+	function NarrowItDownController ($rootScope, MenuSearchService) {
 		var nidc = this;
 		
 		nidc.query = "";
@@ -66,6 +83,8 @@
 		nidc.nothingFound = false;
 		
 		nidc.logItems = function (name) {
+			$rootScope.$broadcast('list:processing', {on: true });
+			console.log("Loading...");
 			var promise = MenuSearchService.getMatchedMenuItems(name);
 
 			promise.then(function (response) {
@@ -80,10 +99,13 @@
 				.catch(function (error) {
 					console.log(error);
 					})
+				.finally(function () {
+					$rootScope.$broadcast('list:processing', {on: false });
+				});
 		};
 		
 		nidc.removeItem = function (index) {
-			console.log("Indexx: ", index);
+			//console.log("Indexx: ", index);
 			nidc.found.splice(index, 1);
 		};
 	
