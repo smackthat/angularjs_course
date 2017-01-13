@@ -9,7 +9,51 @@
 	.controller('NarrowItDownController',NarrowItDownController)
 	.service('MenuSearchService',MenuSearchService)
 	.constant('ApiPath', "https://davids-restaurant.herokuapp.com/menu_items.json")
-	.directive('foundItems',FoundItemsDirective);
+	.component('foundItems', {
+		templateUrl: "templates/founditems.template.html",
+		controller: FoundItemsComponentController,
+		bindings: {
+			onRemove: '&',
+			items: '<',
+			nothing: '<'
+		}
+	})
+	.component('loader', {
+		templateUrl: "templates/itemsloaderindicator.template.html",
+		controller: LoaderController
+	});
+	
+	
+	LoaderController.$inject = ['$rootScope'];
+	function LoaderController($rootScope) {
+		var $ctrl = this;
+		
+		
+		
+	}
+	
+	
+	
+	FoundItemsComponentController.$inject = ['$rootScope', '$element', '$http'];
+	function FoundItemsComponentController($rootScope, $element, $http) {
+		var $ctrl = this;
+		
+		$ctrl.$doCheck = function () {
+			//console.log("Derp!", $http.pendingRequests);
+			if ($http.pendingRequests.length > 0 ) {
+				console.log("Loading...");
+				
+				$rootScope.$broadcast('items:processing', {on: true});
+				
+			}
+		};
+		
+		$ctrl.remove = function (myIndex) {
+			console.log("Index: ", myIndex);
+			$ctrl.onRemove({ index: myIndex });
+		};
+		
+	}
 	
 	
 	NarrowItDownController.$inject = ['MenuSearchService'];
@@ -40,9 +84,10 @@
 		};
 		
 		nidc.removeItem = function (index) {
+			console.log("Indexx: ", index);
 			nidc.found.splice(index, 1);
 		};
-		
+	
 
 		
 	}
@@ -63,7 +108,7 @@
 					 if (word.length === 0)
 						 return foundItems;
 					 var items = result.data.menu_items;
-					 console.log(items);
+					 //console.log(items);
 					 for (var i=0; i < items.length; i++) {
 						if (items[i].description.toLowerCase().indexOf(word.toLowerCase()) !== -1 || items[i].name.toLowerCase().indexOf(word.toLowerCase()) !== -1) {
 							foundItems.push(items[i]);
@@ -76,9 +121,10 @@
 		
 	}
 	
+	/*
 	function FoundItemsDirective () {
 		var ddo = {
-			templateUrl: "loader/itemsloaderindicator.template.html",
+			templateUrl: "templates/founditems.template.html",
 			scope: {
 				onRemove: '&',
 				items: '<',
@@ -106,7 +152,7 @@
 			}
 		}
 		
-	}
+	} */
 	
 })();
 
