@@ -33,12 +33,18 @@
 	}
 	
 	
-	FoundItemsComponentController.$inject = ['$rootScope', '$element', '$q'];
-	function FoundItemsComponentController($rootScope, $element, $q) {
+	
+	FoundItemsComponentController.$inject = ['$rootScope', '$element', '$http'];
+	function FoundItemsComponentController($rootScope, $element, $http) {
 		var $ctrl = this;
 		
 		$ctrl.$doCheck = function () {
-			console.log("Derp!", this);
+			//console.log("Derp!", $http.pendingRequests);
+			if ($http.pendingRequests.length > 0 ) {
+				console.log("Loading...");
+				
+				$rootScope.$broadcast('items:processing', {on: true});
+			}
 		};
 		
 		$ctrl.remove = function (myIndex) {
@@ -101,7 +107,7 @@
 					 if (word.length === 0)
 						 return foundItems;
 					 var items = result.data.menu_items;
-					 console.log(items);
+					 //console.log(items);
 					 for (var i=0; i < items.length; i++) {
 						if (items[i].description.toLowerCase().indexOf(word.toLowerCase()) !== -1 || items[i].name.toLowerCase().indexOf(word.toLowerCase()) !== -1) {
 							foundItems.push(items[i]);
