@@ -29,6 +29,7 @@
 		var $ctrl = this;
 		
 		
+		
 	}
 	
 	
@@ -41,6 +42,7 @@
 		};
 		
 		$ctrl.remove = function (myIndex) {
+			console.log("Index: ", myIndex);
 			$ctrl.onRemove({ index: myIndex });
 		};
 		
@@ -75,9 +77,10 @@
 		};
 		
 		nidc.removeItem = function (index) {
+			console.log("Indexx: ", index);
 			nidc.found.splice(index, 1);
 		};
-		
+	
 
 		
 	}
