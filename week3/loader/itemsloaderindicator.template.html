@@ -1,9 +1,0 @@
-	<ul class="list-group">
-		<li class="list-group-item" ng-repeat="item in list.items">
-			<span>{{ item.name }} </span>
-			<p class="small">{{ item.description }} <span class="label label-info"> {{ item.price_large }} </span></p>
-			<button class="btn btn-sm" ng-click="list.onRemove({index:$index});">Don't want this one!</button>
-		</li>
-	</ul>
-	<br/>
-<div class="empty" ng-if="list.isEmpty();"><p>Nothing found.</p></div>
