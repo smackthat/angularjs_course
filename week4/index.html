@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html ng-app='MenuApp'>
+  <head>
+    <meta charset="utf-8">
+	<link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <title>Chinese Restaurant Chi Chi Chi</title>
+  </head>
+  <body>
+    
+	<nav class="navbar navbar-inverse navbar-fixed-top">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="#">Home</a>
+			</div>
+		</div>
+	</nav>
+
+    <ui-view></ui-view>
+
+    <loader></loader>
+
+    <!-- Libraries -->
+	<script src="bower_components/jquery/dist/jquery.min.js"></script>
+	<script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="bower_components/angular/angular.min.js"></script>
+    <script src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+
+    <!-- Modules -->
+    <script src="src/menu/menuapp.module.js"></script>
+    <script src="src/menu/data.module.js"></script>
+
+    <!-- Routes -->
+    <script src="src/routes.js"></script>
+
+    <!-- 'Menu' module artifacts -->
+    <script src="src/menu/categories.component.js"></script>
+	<script src="src/menu/categories.controller.js"></script>
+    <script src="src/menu/data.module.js"></script>
+    <script src="src/menu/items.component.js"></script>
+	<script src="src/menu/items.controller.js"></script>
+    <script src="src/menu/menudata.service.js"></script>
+
+    <!-- 'Loader' module artifacts -->
+    <script src="src/loader/loader.component.js"></script>
+	
+	<p>Derp!</p>
+
+  </body>
+</html>

@@ -1,0 +1,21 @@
+{
+  "name": "Ass4",
+  "homepage": "https://github.com/smackthat/angularjs_course",
+  "description": "module 4 assignment",
+  "main": "",
+  "keywords": [
+    "angular"
+  ],
+  "authors": [
+    "smackthat"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
