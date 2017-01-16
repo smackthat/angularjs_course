@@ -5,7 +5,9 @@ body {
 	background: black;
 	background: linear-gradient(maroon, crimson);
 	color: white;
+	position: relative;
 }
+
 h2 {
 	font-family: "Times New Roman";
 }
@@ -23,13 +25,35 @@ ul {
 	list-style-type: none;
 }
 
-ul li {
-	width: 20%;
-	padding: .3%;
+ul.category-list li {
+	width: 30%;
+	padding: .8%;
 }
-
-ul li:hover {
+ul.category-list li:hover {
 	color: yellow;
 	cursor: hand;
 	cursor: pointer;
 }
+
+ul.item-list li {
+	padding: 2%;
+}
+
+.panda {
+	width: 12%;
+	z-index: 1;
+	position: absolute;
+	margin: 0 auto;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+}
+
+.vertical-center {
+	min-height: 100%;
+	min-height: 100vh;
+	display: flex;
+	align-items: center;
+}
+
