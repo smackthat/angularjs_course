@@ -11,7 +11,7 @@ LoaderController.$inject = ['$rootScope'];
 function LoaderController($rootScope) {
 	var $ctrl = this;
 	
-	$ctrl.showLoader = true;
+	$ctrl.showLoader = false;
 	
 	var cancelListener = $rootScope.$on('menu:processing', function(event,data) {
 		

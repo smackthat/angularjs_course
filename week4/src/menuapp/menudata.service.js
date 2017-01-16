@@ -4,11 +4,12 @@
 angular.module('Data')
 .service('MenuDataService', MenuDataService);
 
-MenuDataService.$inject = ['$http'];
-function MenuDataService($http) {
+MenuDataService.$inject = ['$rootScope','$http'];
+function MenuDataService($rootScope, $http) {
 	var service = this;
 	
 	service.getAllCategories = function () {
+		$rootScope.$broadcast('menu:processing', {on: true});
 		var response = $http({
 			method: "GET",
 			url: 'https://davids-restaurant.herokuapp.com/categories.json'
@@ -19,9 +20,13 @@ function MenuDataService($http) {
 		.catch (function (error) {
 			console.log(error);
 		})
+		.finally (function() {
+			$rootScope.$broadcast('menu:processing', {on: false});
+		});
 	};
 	
 	service.getItemsForCategory = function (shortName) {
+		$rootScope.$broadcast('menu:processing', {on: true});
 		var response = $http({
 			method: "GET",
 			url: 'https://davids-restaurant.herokuapp.com/menu_items.json?category='+shortName
@@ -33,6 +38,9 @@ function MenuDataService($http) {
 		.catch (function (error) {
 			console.log(error);
 		})
+		.finally (function() {
+			$rootScope.$broadcast('menu:processing', {on: false});
+		});
 		
 	};
 	
