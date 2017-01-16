@@ -1,0 +1,10 @@
+<div class="main text-center">
+	<h2>Menu</h2>
+	<div class="container">
+		<ul>
+			<li ng-repeat="item in catc.items" ui-sref="categories.category({categoryId:item.short_name})">
+				{{ item.name }}
+			</li>
+		</ul>
+	</div>
+</div>
