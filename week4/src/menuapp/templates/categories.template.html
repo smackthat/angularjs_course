@@ -5,14 +5,14 @@
 			<div class="col-xs-8 col-md-6">
 				<ul class="category-list">
 					<li ng-repeat="item in catc.items" ui-sref="categories.category({categoryId:item.short_name})">
-					{{ item.name }}
+						<span>{{ item.name }}</span>
 					</li>
 				</ul>
 			</div>
-			<div class ="col-xs-4 col-md-6">
+			<div class="col-xs-4 col-md-4">
 				<ui-view></ui-view>
 			</div>
 		</div>
-
 	</div>
+	<loader></loader>
 </div>

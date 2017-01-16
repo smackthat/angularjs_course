@@ -32,7 +32,6 @@ function MenuDataService($rootScope, $http) {
 			url: 'https://davids-restaurant.herokuapp.com/menu_items.json?category='+shortName
 		});
 		return response.then(function(result) {
-			console.log("Data:", result.data.menu_items);
 			return result.data.menu_items;
 		})
 		.catch (function (error) {

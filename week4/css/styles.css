@@ -28,6 +28,7 @@ ul {
 ul.category-list li {
 	width: 30%;
 	padding: .8%;
+	font-family: cursive;
 }
 ul.category-list li:hover {
 	color: yellow;
@@ -40,7 +41,7 @@ ul.item-list li {
 }
 
 .panda {
-	width: 12%;
+	width: 15%;
 	z-index: 1;
 	position: absolute;
 	margin: 0 auto;
