@@ -1,0 +1,27 @@
+<div class="container">
+<h2 class="text-center">My info</h2>
+	<div ng-if="mic.userRegistered();" class="text-center">
+		<br/>
+		<div class="row">
+			<div class="col-xs-8 col-md-6">
+				<span class="glyphicon glyphicon-user"> {{mic.user.firstname}}{{mic.user.lastname }}</span>
+				<br/>
+				<span class="glyphicon glyphicon-envelope"> {{ mic.user.email }} </span>
+				<br/>
+				<span class="glyphicon glyphicon-earphone"> {{mic.user.phone }} </span>
+			</div>
+			<div ng-if="mic.fabExists();"class="col-xs-6 col-md-4">
+				<div class="well">
+				<p>My favorite</p>
+				<p>{{mic.user.fab.name}}</p>
+				<p class="small">{{mic.user.fab.description}}</p>
+				<img class="img-responsive" width="250" height="150" ng-src="https://smackthat-angular.herokuapp.com/images/{{mic.user.fab.short_name}}.jpg" alt="{{mic.user.fab.name}}">
+				</div>
+			</div>
+		</div>
+	</div>
+	<div ng-if="!mic.userRegistered();" class="text-center">
+		<span>Not signed up yet. <a ui-sref="public.signup">Sign up now!</a></span>
+	</div>
+	
+</div>

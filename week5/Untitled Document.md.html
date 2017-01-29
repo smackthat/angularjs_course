@@ -1,0 +1,44 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Untitled Document.md</title><style></style></head><body id="preview">
+<h1><a id="Module_5_Coding_Assignment_0"></a>Module 5 Coding Assignment</h1>
+<p><a href="https://www.coursera.org/learn/single-page-web-apps-with-angularjs">Click here to SIGN UP for the <strong><em>Single Page Web Applications with AngularJS</em></strong> course on Coursera</a>. It’s FREE!</p>
+<p><strong>It’s coding time! Woohoo!!!</strong></p>
+<h2><a id="Time_to_Complete_6"></a>Time to Complete</h2>
+<p>It should take about an 1 hours or less. (This is just an estimate. People’s backgrounds differ, so for some people it will take longer to complete.)</p>
+<p><strong>Ask questions in <a href="https://www.coursera.org/learn/single-page-web-apps-with-angularjs/discussions/weeks/5">Week 5 Discussion Forum</a> if you get stuck! We are all learning, and going through getting stuck and then unstuck (even with someone’s help) can be a very valuable learning experience!</strong></p>
+<h2><a id="Assignment_Instructions_12"></a>Assignment Instructions</h2>
+<h3><a id="General_Idea_14"></a>General Idea</h3>
+<p>Your starting point for this assignment will be the code in the <code>examples/Lecture59</code> folder.</p>
+<p>Your task is fairly simply.</p>
+<p>First, change the 2 buttons at the top of the website to say <code>My Info</code> and <code>Sign Up</code> instead of <code>About</code> and <code>Awards</code>.</p>
+<p><strong>Task 1:</strong><br>
+When the user clicks on the <code>Sign Up</code> button, they should be taken to a view that lets them “sign up” for the newsletter (that will never come :-) ) of the restaurant. The sign up form should ask for the following information: first name, last name, email address, and phone number. It should also ask the user to specify the menu number that’s their favorite dish. (The menu number is the <code>short_name</code> attribute of each menu item).</p>
+<p>Everything in the form (except th <code>short_name</code>) must be validated through AngularJS validation we learned in this module. When the user clicks the <code>Submit</code> button (after all other fields are validated), try to retrieve the menu item the user specified as their favorite through the following REST endpoint <a href="https://YOUR-CHOSEN-SUBDOMAIN.herokuapp.com/menu_items/SHORT-NAME.json">https://YOUR-CHOSEN-SUBDOMAIN.herokuapp.com/menu_items/SHORT-NAME.json</a>, where <code>YOUR-CHOSEN-SUBDOMAIN</code> is the subdomain discussed in Lecture50 (Restaurant Server Setup), and the  <code>SHORT-NAME</code> is the name the user provided. If the server returns an error, you will know that the item name specified is not valid. If that’s the case, display a message next to the favorite choice saying <code>No such menu number exists</code>. (See bonus for more)</p>
+<p>If everything is valid, save the user’s preference somewhere in your client app such that you can retrieve it in another view/component/controller/etc. (Hint: think service). Once saved, display a message below the form saying <code>Your information has been saved</code>.</p>
+<p><strong>Task 2:</strong><br>
+When the user clicks on <code>My Info</code> button, they should be taken to another view where it shows them their “registered” information, including the favorite menu item they picked. When showing the favorite menu item, display the picture of the menu item as well as its title and description.</p>
+<p>If the user hasn’t yet “registered” through the <code>Sign Up</code> button, simply display a message saying: <code>Not Signed Up Yet. Sign up Now!</code>. The words “Sign up Now!” should be a link to the same view as the <code>Sign Up</code> link points to.</p>
+<h2><a id="Bonus_not_graded_34"></a>Bonus (not graded)</h2>
+<p><strong>Bonus Task 3:</strong><br>
+We haven’t covered this, so do some research and figure out how to setup the validation of the user’s choice for the favorite item BEFORE the user hits the <code>Submit</code> button. This way, the message <code>No such menu number exists</code> should show up pretty soon after the user types something into the favorite menu item textbox and it loses focus.</p>
+<p>(Yes, I realize, it may be better to simply present the user with the list of items, but this is an exercise, after all.)</p>
+<p><strong>Bonus Task 4:</strong><br>
+Write a simple test which exercises the function that will determine if the favorite item exists in the menu or doesn’t exist. Note, that you will need to use the $httpBackend service (and probably look up the docs for it as well) to achieve this test properly.</p>
+<h3><a id="Rules_45"></a>Rules</h3>
+<p>Do it the Angular way… We’ve covered this enough in the previous assignments and having the restaurant codebase the way it is, it would simply be more “painful” for you to try to do this without AngularJS, so I trust that you will pretty much be forced to do things the Angular way.</p>
+<h3><a id="Steps_48"></a>Steps</h3>
+<p>I will not detail the steps in this assignment simply because pretty much all of them have been listed in the previous assignments. At this point, you have done the tasks I am asking you to do in this assignment in the previous assignments (with the exclusion of form validation, which you should just look up the lecture and sample code for.)</p>
+<h4><a id="Important_Implementation_Notes_52"></a>Important Implementation Notes</h4>
+<ol>
+<li>Make sure all of your Javascript code is inside of an IIFE. (<em>If you don’t know what that is or why we’d want to use it, brush up on it by looking through module 4 of <a href="https://www.coursera.org/learn/html-css-javascript-for-web-developers/">HTML, CSS, and Javascript for Web Developers</a> course I teach.</em>)</li>
+<li>Make sure all of your dependency injections are protected from minification.</li>
+<li>After you are done and satisfied with your solution, don’t forget to add/commit/push your code to your repository.</li>
+</ol>
+<h2><a id="IMPORTANT_REMINDERS_57"></a><strong>IMPORTANT REMINDERS:</strong></h2>
+<ul>
+<li>Closely follow the submission guidelines for this assignment on <a href="http://Coursera.org">Coursera.org</a></li>
+<li>Make <strong>sure</strong> you provide the correct URL in your submission (it should be GitHub&lt;b&gt;.io&lt;/b&gt;, <em>not</em> GitHub&lt;b&gt;.com&lt;/b&gt;)</li>
+<li>Make <strong>sure</strong> to TEST your assignment not just on your local machine, but ALSO once you deploy it on GitHub, using the URL you are providing as part of your submission.</li>
+<li>This assignment will be peer-reviewed (and graded). The guidance will be given such that if submission instructions are not followed, the assignment is to be failed. This includes providing the wrong URL for your deployment. Following instructions is very much part of software development. After all, that’s what software requirements are - instructions to follow.</li>
+</ul>
+
+</body></html>
