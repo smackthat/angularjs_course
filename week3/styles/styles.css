@@ -13,7 +13,12 @@ found-items {
 	text-align: center;
 }
 body {
-	background: linear-gradient(red, yellow);
+	height: 100%;
+	margin: 0;
+	background: red;
+	background: linear-gradient(maroon, crimson);
+	background-repeat: no-repeat;
+	background-attachment: fixed;
 }
 .container {
 	margin: auto;
